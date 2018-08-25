@@ -1,0 +1,11 @@
+extends layout
+include mixins
+
+block header
+  h1 AMP Project
+
+block content
+  +todoItem(0)
+  +todoItem(1)
+  +todoItem(2)
+  +todoForm

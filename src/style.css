@@ -1,0 +1,18 @@
+h1 {
+  font-size: 1em;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.app {
+  font-family: Arial, Helvetica, sans-serif;
+  max-width: 860px;
+  background-color: #f6f6ef;
+  margin: 10px auto;
+}

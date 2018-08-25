@@ -1,0 +1,14 @@
+mixin macro(name, variable, expr)
+  amp-bind-macro(id=name arguments=variable expression=expr)
+
+mixin todoItem(num)
+  .hide([class]="todos && todos[" + num + "] ? 'show' : 'hide'")
+    .todoItem
+      span.text([text]="todos && todos[" + num + "] ? todos[" + num + "] : ''")
+      button.delete(on="tap:AMP.setState({ todos: todos.filter((e, i) => i != " + num + ") })") x
+
+mixin todoForm
+  .todoForm
+    input(placeholder="add..." on="change:AMP.setState({ activeTodo: event.value })")
+    button.add(on="tap:AMP.setState({ todos: todos ? todos.concat([activeTodo]) : [activeTodo] })") +
+
