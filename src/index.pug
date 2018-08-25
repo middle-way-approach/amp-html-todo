@@ -2,10 +2,10 @@ extends layout
 include mixins
 
 block header
-  h1 AMP Project
+  h1 Todo App
 
 block content
-  +todoItem(0)
-  +todoItem(1)
-  +todoItem(2)
+  -var n = 0;
   +todoForm
+  while n < 10
+    +todoItem(n++)

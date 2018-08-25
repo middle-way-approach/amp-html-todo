@@ -1,14 +1,15 @@
 mixin macro(name, variable, expr)
-  amp-bind-macro(id=name arguments=variable expression=expr)
+  amp-bind-macro(id=name, arguments=variable, expression=expr)
 
 mixin todoItem(num)
   .hide([class]="todos && todos[" + num + "] ? 'show' : 'hide'")
     .todoItem
-      span.text([text]="todos && todos[" + num + "] ? todos[" + num + "] : ''")
-      button.delete(on="tap:AMP.setState({ todos: todos.filter((e, i) => i != " + num + ") })") x
-
+      span([class]="todos[" + num + "].done ? 'done' : ''" , [text]="todos && todos[" + num + "] ? todos[" + num + "].text : ''")
+      .buttons
+        button.toggle(on="tap:AMP.setState({todos: todos.map(e => e != todos[" + num + "] ? e : { text: e.text, done: !e.done })});") &#x2713;
+        button.delete(on="tap:AMP.setState({ todos: todos.filter((e, i) => i != " + num + ") })") -
 mixin todoForm
   .todoForm
-    input(placeholder="add..." on="change:AMP.setState({ activeTodo: event.value })")
+    input(placeholder="add..." on="change:AMP.setState({ activeTodo: { text: event.value, done: false }})")
     button.add(on="tap:AMP.setState({ todos: todos ? todos.concat([activeTodo]) : [activeTodo] })") +
 
